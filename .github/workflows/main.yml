@@ -23,7 +23,10 @@ jobs:
 
       - name: Build Angular application
         run: npm run build VididolWebApp --prod
-
+      
+      - name: Double check
+        run: ls -la ./dist/
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
