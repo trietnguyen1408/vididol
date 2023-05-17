@@ -30,6 +30,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
+          personal_token: "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"
           publish_dir: ./dist/VididolWebApp
 
