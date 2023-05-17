@@ -1,0 +1,156 @@
+<header class="navbar navbar-light bg-light">
+  <!-- Logo -->
+  <a class="navbar-brand py-0" href="#">
+    <img src="./assets/images/PureLogoVidiDOL.png" width="40" height="40" alt="VidiDOL Logo">
+    <div class="logo-text ml-2">VidiDOL</div>
+  </a>
+  <img *ngIf="loginService.isLoggedIn" src="{{user.avatarLocation}}"
+    class="rounded-circle offset-4 offset-md-6 offset-lg-8 " width="50" height="50" />
+  <!--notification-->
+  <div *ngIf="loginService.isLoggedIn" class="dropdown">
+    <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="userViewNotiClick()"><i
+        class="fa fa-bell fa-2x "></i></a>
+
+
+    <span id="notification_count">{{userNotifications.length}}</span>
+    <!-- Loop notification element-->
+    <div class="dropdown-menu dropdown-menu-right ">
+
+      <a *ngFor="let userNotification of userNotifications" class="dropdown-item"
+        routerLink="{{userNotification.link}}">
+        <span class="font-weight-bold">{{userNotification.from}}:</span>
+        {{userNotification.message}}
+      </a>
+
+
+    </div>
+  </div>
+  <form class="form-inline">
+
+    <button *ngIf="!loginService.isLoggedIn" class="btn btn-outline-success btn-sm mr-3" type="button"
+      data-toggle="modal" data-target="#SignInModal">Đăng nhập</button>
+    <button *ngIf="!loginService.isLoggedIn" class="btn btn-outline-danger btn-sm" type="button" data-toggle="modal"
+      data-target="#SignUpModal">Đăng
+      kí</button>
+    <button *ngIf="loginService.isLoggedIn" class="btn btn-outline-secondary btn-sm" type="button"
+      (click)="signOutSuccess()">Đăng
+      xuất</button>
+  </form>
+
+  <!-- Modal Sign In -->
+  <div class="modal fade" id="SignInModal" tabindex="-1" role="dialog" aria-labelledby="SignInModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form class="form-signin">
+            <div class="text-center mb-4">
+              <img class="mb-4" src="./assets/images/PureLogoVidiDOL.png" alt="" width="72" height="72">
+              <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+              <p>bằng tài khoản VidiDOL</p>
+            </div>
+            <div class="form-label-group">
+              <input type="email" id="sign-in-email" class="form-control" placeholder="Email đăng nhập" required=""
+                autofocus="">
+              <label for="sign-in-email">Email đăng nhập</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="sign-in-password" class="form-control" placeholder="Mật khẩu" required="">
+              <label for="sign-in-password">Mật khẩu</label>
+            </div>
+
+            <div class="checkbox mb-1">
+              <label>
+                <input type="checkbox" value="remember-me"> Ghi nhớ đăng nhập
+              </label>
+            </div>
+            <div class="container-fluid">
+              <div class="row mb-1">
+
+                <div class="col-md-8">
+                  <button class="btn btn-md btn-success btn-block" type="submit" (click)="signInSuccess()">Đăng
+                    nhập</button>
+                </div>
+
+                <div class="col-md-2">
+                  <a href="#" class="fab fa-facebook-f sign-in-facebook fa-fw ">
+                    <!-- <i class="fab fa-facebook-square"></i> -->
+                  </a>
+                </div>
+
+                <div class="col-md-2">
+                  <a href="#" class="fab fa-instagram sign-in-instagram fa-fw">
+                    <!-- <i class="fab fa-instagram fa-2x"></i> -->
+                  </a>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="footer-app-content-actions">
+                  <div>
+                    <a routerLink="forgetpassword" class="btn__tertiary--medium action__btn">Quên mật khẩu ?</a>
+                  </div>
+                  <p>Chưa có tài khoản VidiDOL ?
+                    <a href="" tabindex="0">Đăng kí ngay</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sign Up -->
+  <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form class="form-signin">
+            <div class="text-center mb-4">
+              <img class="mb-4" src="./assets/images/PureLogoVidiDOL.png" alt="" width="72" height="72">
+              <h1 class="h3 mb-3 font-weight-normal">Đăng kí</h1>
+              <p>Xin hãy điền thông tin để tạo tài khoản</p>
+            </div>
+            <div class="form-label-group">
+              <input type="email" id="sign-up-email" class="form-control" placeholder="Email đăng kí" required=""
+                autofocus="">
+              <label for="sign-up-email">Email</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="sign-up-password" class="form-control" placeholder="Mật khẩu" required="">
+              <label for="sign-up-password">Mật khẩu</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="sign-up-password-confirm" class="form-control" placeholder="Nhập lại mật khẩu"
+                required="">
+              <label for="sign-up-password-confirm">Nhập lại mật khẩu</label>
+            </div>
+
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me">Tôi đồng ý với điều khoản đăng kí.
+              </label>
+            </div>
+            <button class="btn btn-md btn-primary btn-block" type="submit" (click)="signInSuccess()">Đăng kí</button>
+            <button class="btn btn-md btn-facebook btn-block" type="submit" (click)="signInSuccess()">
+              <span>
+                <i class="fab fa-facebook-f"></i>
+              </span>Đăng kí bằng Facebook
+            </button>
+            <button class="btn btn-md btn-instagram btn-block" type="submit" (click)="signInSuccess()">
+              <span>
+                <i class="fab fa-instagram fa-2x"></i>
+              </span>Đăng kí bằng Instagram
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

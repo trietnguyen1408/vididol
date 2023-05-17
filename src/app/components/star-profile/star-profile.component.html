@@ -1,0 +1,93 @@
+<div>
+  <div class="container">
+    <div class="section-1 m-3">
+      <div class="row m-2">
+        <div class="col-md-4">
+          <div class="star-avatar d-flex justify-content-center">
+            <img src="./assets/images/userAvatar/1/square-avatar.jpg" class="rounded-circle img-thumbnail"
+              alt="Cinque Terre" width="288" height="288">
+          </div>
+          <div class=" mt-4 p-2 border border-primary rounded d-flex flex-column">
+            <button class="btn btn-primary m-1" href="#" onclick="return false;">Gửi tin nhắn cho thần tượng</button>
+            <a class="btn btn-primary m-1" data-toggle="collapse" href="#commentsOnStar" role="button"
+              aria-expanded="false" aria-controls="commentsOnStar">Bình luận</a>
+            <div class="collapse" id="commentsOnStar">
+              <div class="card card-body">
+                Cảm ơn Chú Hoài Linh.
+              </div>
+            </div>
+            <a class="btn btn-primary m-1" data-toggle="collapse" href="#starResponseRate" role="button"
+              aria-expanded="false" aria-controls="starResponseRate">Độ phản hồi</a>
+            <div class="collapse" id="starResponseRate">
+              <div class="card card-body">
+                Phản hồi khá là nhanh đấy.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 offset-md-2">
+          <div class="h3">Intro Video</div>
+          <div class="embed-responsive embed-responsive-1by1">
+            <iframe [src]='starprofile.featureVideoUrl | safe : "resourceUrl"' frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-2 m-3">
+      <div class="h3 d-flex justify-content-center">{{starprofile.displayName}}</div>
+      <div class="row">
+        {{starprofile.description}}
+      </div>
+    </div>
+
+    <div class="section-3">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">Gửi Fan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">Cá Nhân</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="row">
+            <div *ngFor="let video of starprofile.listOfRequestedVideos" class="card col-md-4 p-2">
+              <img src="{{video.thumbnail}}" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{video.title}}</h5>
+                <p class="card-text">{{video.subtitle}}</p>
+                <a href="#" class="btn btn-primary">Thả tim</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="row">
+            <div *ngFor="let video of starprofile.listOfSelfVideos" class="card col-md-4 p-2">
+              <img src="{{video.thumbnail}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">2 tim</h5>
+                <p class="card-text">{{video.title}}</p>
+                <a href="#" class="btn btn-primary">Thả tym</a>
+                <a href="#" class="btn btn-primary ml-1">Bình luận</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save for later - Maybe Relating Artist -->
+    <div class="section-4">
+
+    </div>
+  </div>
+</div>
