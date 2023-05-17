@@ -22,7 +22,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Angular application
-        run: npm run build -- --prod
+        run: ng build  --base-href /vididol/ --prod
       
       - name: Double check
         run: ls -la ./dist/
