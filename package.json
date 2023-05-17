@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-docs":"ng build --output-path docs --base-href /vididol/"
+    "build-docs":"ng build --base-href='https://trietnguyen1408.github.io/vididol/' "
   },
   "private": true,
   "dependencies": {
