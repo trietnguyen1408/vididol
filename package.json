@@ -1,6 +1,6 @@
 {
   "name": "vididol-web-app",
-  "homepage":"https://trietnguyen1408.github.io/vididol/",
+  "homepage":"https://github.com/trietnguyen1408/vididol",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
